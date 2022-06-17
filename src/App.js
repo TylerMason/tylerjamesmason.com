@@ -1,13 +1,14 @@
+//import { Card } from '@mui/material';
 import './App.css'
-import Button from '@mui/material/Button'
+import Layout from './Layout/Layout';
 
 
 function App() {
+
+  //const dataComp = 
   return (
-    <div className="App">
-      <h1> Tallen is a gay ass bitch </h1>
-      <Button variant="contained">meh</Button>
-    </div>
+    <Layout>
+    </Layout>
   );
 }
 
