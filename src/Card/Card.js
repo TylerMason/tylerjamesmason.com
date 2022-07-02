@@ -5,22 +5,26 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export default function MediaCard() {
+export default function MediaCard({data}) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         height="140"
-        image="/static/images/cards/contemplative-reptile.jpg"
+
+        // pass this info down from the top because we are gonna map and have multiple
+        src={data.mediaURL}
+
+        // this can also be whatever
         alt="green iguana"
       />
       <CardContent>
+        
         <Typography gutterBottom variant="h5" component="div">
           Lizard
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {data.name}
         </Typography>
       </CardContent>
       <CardActions>
@@ -30,3 +34,4 @@ export default function MediaCard() {
     </Card>
   );
 }
+
