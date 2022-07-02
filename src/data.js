@@ -1,18 +1,34 @@
-const Data = [
+const data = [
     {
-        id: 1,
-        title: "yo"
+      name: 'cardOne',
+      mediaURL: 'https://i.gifer.com/AIO6.gif',
+      id: 1
     },
     {
-        id: 2,
-        title: "yo boy"
+      name: 'cardTwo',
+      mediaURL: 'https://i.giphy.com/media/26tn84fF0eL3c898c/giphy.gif',
+      id: 2
     },
     {
-        id: 3,
-        title: "yo girl"
+      name: 'cardThree',
+      mediaURL: 'https://i.gifer.com/5NkM.gif',
+      id: 3
     },
     {
-        id: 4,
-        title: "yo mans"
+      name: 'cardFour',
+      mediaURL: 'https://i.gifer.com/3or4.gif',
+      id: 4
     },
+    {
+      name: 'cardFive',
+      mediaURL: 'https://c.tenor.com/6wu4CpELPAwAAAAC/jon-snow-pixel.gif',
+      id: 5
+    },
+    {
+      name: 'cardSix',
+      mediaURL: 'https://c.tenor.com/-QmSj6ibnt0AAAAC/gregor-clegane-pixel.gif',
+      id: 6
+    }
 ]
+
+export default data

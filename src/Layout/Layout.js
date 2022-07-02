@@ -15,7 +15,7 @@ const Layout = ({data}) => {
 
   return (
     
-    <Grid container justifyContent="center" spacing={3} padding={3}>
+    <Grid container justifyContent="center" spacing={3} padding={3} alignContent="center">
       {dataComp}
     </Grid>
   )

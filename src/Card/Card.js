@@ -10,6 +10,7 @@ export default function MediaCard({data}) {
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
+        width="345"
         height="140"
 
         // pass this info down from the top because we are gonna map and have multiple
