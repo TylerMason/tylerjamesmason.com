@@ -14,7 +14,7 @@ const cardData = [
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className=" flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static h-auto lg:w-auto lg:bg-none">
+      <div className=" md:mt-32 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static h-auto lg:w-auto lg:bg-none">
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* Map over the card data to render each card */}
