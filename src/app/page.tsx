@@ -3,12 +3,12 @@ import CardComponent from './components/Cards/CardComponent';
 
 // Placeholder data for the cards
 const cardData = [
-  { title: "Card 1", imageUrl: "/images/bluenight.gif", href: "/page1" },
-  { title: "Card 2", imageUrl: "/images/collosus.gif", href: "/page2" },
-  { title: "Card 3", imageUrl: "/images/greendeath.gif", href: "/page3" },
-  { title: "Card 4", imageUrl: "/images/orangeresting.gif", href: "/page4" },
-  { title: "Card 5", imageUrl: "/images/redwasteland.gif", href: "/page5" },
-  { title: "Card 6", imageUrl: "/images/samuraigraveyard.gif", href: "/page6" },
+  { title: "Card 1", imageUrl: "/images/bluenight.gif", href: "/project1" },
+  { title: "Card 2", imageUrl: "/images/collosus.gif", href: "/project2" },
+  { title: "Card 3", imageUrl: "/images/greendeath.gif", href: "/project3" },
+  { title: "Card 4", imageUrl: "/images/orangeresting.gif", href: "/project4" },
+  { title: "Card 5", imageUrl: "/images/redwasteland.gif", href: "/project5" },
+  { title: "Card 6", imageUrl: "/images/samuraigraveyard.gif", href: "/project6" },
 ];
 
 export default function Home() {
