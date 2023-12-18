@@ -2,7 +2,7 @@
 const Project1 = () => {
     return (
       <div>
-        <h1>This is Page 1</h1>
+        <h1>This is Project 1</h1>
         {/* Add more content as needed */}
       </div>
     );
