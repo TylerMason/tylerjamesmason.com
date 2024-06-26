@@ -12,8 +12,8 @@ const MapPage = () => {
         <title>Interactive Map</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <main className="flex flex-col items-center">
-        <h1 className="text-4xl font-bold mb-4">Interactive Map</h1>
+      <main className="flex flex-col items-center justify-center">
+        <h1 className="text-4xl font-bold mb-4 text-center">Interactive Map</h1>
         <MapComponent />
       </main>
     </div>

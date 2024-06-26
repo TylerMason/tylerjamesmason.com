@@ -1,19 +1,16 @@
-// components/MapComponent.tsx
+//1. Import dependencies for React, Leaflet and other functionalities.
 import React, { useState, useEffect, useRef, FC } from "react";
-import { MapContainer, ImageOverlay, Marker, Popup, useMapEvents, useMap } from "react-leaflet";
+import { MapContainer, ImageOverlay, TileLayer, Marker, Popup, useMapEvents, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css";
 import "leaflet-defaulticon-compatibility";
-import { CRS, LatLngTuple, LatLngBoundsLiteral } from 'leaflet';
-import '../utils/leafletIcons';
 
-// Define the interface for MarkerData.
+//2. Define the interface for MarkerData.
 interface MarkerData {
   coordinates: [number, number];
   title: string;
 }
-
-// Loader component for showing loading animation.
+//3. Loader component for showing loading animation.
 const Loader = () => {
   return (
     <div className="absolute z-[10000] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -36,26 +33,20 @@ const Loader = () => {
     </div>
   );
 };
-
-// Main component definition.
+//4. Main component definition.
 const MapComponent: FC = () => {
-  const bounds: LatLngBoundsLiteral = [[0, 0], [1000, 1000]]; // Adjust these bounds to fit your image dimensions
-
-  // Initialize local state.
+  //5. Initialize local state.
   const [inputValue, setInputValue] = useState<string>("");
   const [markerData, setMarkerData] = useState<MarkerData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [submittedQuestion, setSubmittedQuestion] = useState<string | null>(null);
-
-  // Declare useRef to reference map.
+  //6. Declare useRef to reference map.
   const mapRef = useRef<any | null>(null);
-
-  // ZoomHandler component for handling map zoom events.
+  //7. ZoomHandler component for handling map zoom events.
   const ZoomHandler: FC = () => {
-    // Use Leaflet's useMap hook.
+    //8. Use Leaflet's useMap hook.
     const map = useMap();
-
-    // Function to fly map to given coordinates.
+    //9. Function to fly map to given coordinates.
     const flyToMarker = (coordinates: [number, number], zoom: number) => {
       if (coordinates && typeof coordinates[0] !== "undefined") {
         map.flyTo(coordinates, zoom, {
@@ -64,14 +55,12 @@ const MapComponent: FC = () => {
         });
       }
     };
-
     useMapEvents({
       zoomend: () => {
         setLoading(false);
       },
     });
-
-    // useEffect to trigger the map fly when markerData changes.
+    //10. useEffect to trigger the map fly when markerData changes.
     useEffect(() => {
       if (markerData) {
         if (markerData.coordinates && typeof markerData.coordinates[0] !== "undefined") {
@@ -79,20 +68,17 @@ const MapComponent: FC = () => {
         }
       }
     }, [markerData]);
-
-    // Return null as we're not rendering anything in the DOM.
+    //11. Return null as we're not rendering anything in the DOM.
     return null;
   };
-
-  // Function to handle form submission.
+  //12. Function to handle form submission.
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      // Set loading state and clear the input.
+      //13. Set loading state and clear the input.
       setSubmittedQuestion(inputValue);
       setInputValue("");
-
-      // Make the API request using fetch.
+      //14. Make the API request using fetch.
       const response = await fetch("/api/Coordinates", {
         method: "POST",
         headers: {
@@ -100,50 +86,40 @@ const MapComponent: FC = () => {
         },
         body: JSON.stringify({ value: inputValue }),
       });
-
-      // Parse and set the response data.
+      //15. Parse and set the response data.
       const data = await response.json();
       setMarkerData(data);
     } catch (error) {
-      // Log errors.
+      //16. Log errors.
       console.error(error);
     }
   };
-
-  // Return the JSX for rendering.
+  //17. Return the JSX for rendering.
   return (
     <>
-      {/* Show the loader if loading. */}
+      {/* 18. Show the loader if loading. */}
       {loading && <Loader />}
-
-      {/* Conditionally render the title overlay. */}
+      {/* 19. Conditionally render the title overlay. */}
       {markerData && markerData.coordinates && (
         <div className="flex items-center justify-center absolute top-3 right-3 z-[100000]">
           <h1 className="text-3xl font-bold text-black p-2 bg-white rounded-md z-[100000]">{markerData.title}</h1>
         </div>
       )}
-
-      {/* Add the map container. */}
-      <MapContainer center={[500, 500]} zoom={-2} minZoom={-4} maxZoom={4} crs={CRS.Simple} className="w-full h-full">
-        {/* Set the image overlay for the map. */}
-        <ImageOverlay url="/images/map.png" bounds={bounds} />
-
-        {/* Conditionally render the marker. */}
+      {/* 20. Add the map container. */}
+      <MapContainer center={[43.6426, -79.3871]} zoom={11} style={{ height: "50vh", width: "50vw", justifyContent: "center"}}>
+        {/* 21. Set the tile layer for the map. */}
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        {/* 22. Conditionally render the marker. */}
         {markerData && markerData.coordinates && (
           <Marker position={markerData.coordinates}>
             <Popup>{markerData.title}</Popup>
           </Marker>
         )}
-
-        {/* Include the ZoomHandler for zoom events. */}
+        {/* 23. Include the ZoomHandler for zoom events. */}
         <ZoomHandler />
       </MapContainer>
-
-      
-      
     </>
   );
 };
-
-// Export the MapComponent.
+//25. Export the MapComponent.
 export default MapComponent;
