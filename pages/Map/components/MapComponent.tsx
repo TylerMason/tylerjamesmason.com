@@ -139,28 +139,8 @@ const MapComponent: FC = () => {
         <ZoomHandler />
       </MapContainer>
 
-      {/* Include the form input, submit button and area for submitted question. */}
-      <div className="absolute bottom-5 left-0 w-full z-[10000] p-3">
-        <div className="flex justify-center">
-          {submittedQuestion && (
-            <div className="flex items-center justify-center bottom-16 absolute w-full z-[100000]">
-              <h1 className="text-3xl font-bold text-black p-2 bg-white rounded-md">{submittedQuestion}</h1>
-            </div>
-          )}
-          <input
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            className="flex-grow p-2 border rounded-md"
-            onKeyPress={(e) => {
-              if (e.key === "Enter") handleSubmit();
-            }}
-          />
-          <button onClick={handleSubmit} className="p-2 ml-2 bg-blue-500 text-white rounded-md">
-            Submit
-          </button>
-        </div>
-      </div>
+      
+      
     </>
   );
 };
